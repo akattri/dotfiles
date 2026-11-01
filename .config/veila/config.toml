@@ -1,0 +1,11 @@
+theme = "default"
+
+[background]
+mode = "solid"
+color = "#121212"
+
+[visuals.clock]
+format = "12h"
+meridiem_font_size = 22
+meridiem_x = 6
+meridiem_y = 7

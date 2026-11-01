@@ -1,0 +1,9 @@
+# Backups and temporary files
+*.bak
+*~
+*.swp
+*.swo
+.DS_Store
+
+# Celluloid state
+watch_later/
