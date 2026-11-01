@@ -2,6 +2,11 @@
 
 Personal configuration files and scripts.
 
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/53a7e1ab-e1f5-4003-a227-97ff675f01a1" />
+
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/e6366b3a-a23f-4977-98b3-985facb5e231" />
+
+
 ## Contents
 
 - **[niri](.config/niri/)**: Configuration for the [Niri](https://github.com/YaLTeR/niri) scrollable-tiling Wayland compositor (`config.kdl`) and helper scripts (`brightness.sh`, `volume.sh`).
