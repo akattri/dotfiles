@@ -10,16 +10,11 @@ A clean, responsive, pure Wayland desktop setup based on the **Niri** scrollable
 
 ### Sample Menus
 
-<p align="center">
+<p align="center"> (older version)
   <img src="screenshots/fuzzel_menu.png" alt="Fuzzel Battery & Profiles Menu" width="70%" />
 </p>
 
 ---
-
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/f1abc86a-a34f-4fd0-bbc1-15955c94d70d" />
-
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/e6366b3a-a23f-4977-98b3-985facb5e231" />
-
 
 ## Contents
 
