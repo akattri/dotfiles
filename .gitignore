@@ -5,5 +5,11 @@
 *.swo
 .DS_Store
 
+# Python cache & runtime state
+__pycache__/
+*.py[cod]
+*$py.class
+nightlight.json
+
 # Celluloid state
 watch_later/

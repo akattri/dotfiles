@@ -1,0 +1,241 @@
+/* GNOME Shell-like theme for Waybar */
+
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "JetBrainsMono Nerd Font", "Adwaita Sans", "Inter", "Ubuntu", "DejaVu Sans", sans-serif;
+    font-size: 17px;
+    font-weight: 800;
+    min-height: 0;
+}
+
+window#waybar {
+    background-color: #000000;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    color: #ffffff;
+    transition-property: background-color;
+    transition-duration: .0s;
+}
+
+/* GNOME 45+ Workspaces Indicator Pill */
+#workspaces,
+#group-workspaces,
+.group.workspaces,
+/*.modules-left .group {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 0px;
+    margin: 3px 4px 3px 10px;
+    padding: 2px 3px;
+}*/
+
+#custom-ws1,
+#custom-ws2,
+#custom-ws3,
+#custom-ws4{
+    padding: 2px;
+    margin: 0px 2px;
+    min-width: 28px;
+    border-radius: 4px;
+    color: rgba(255, 255, 255, 0.65);
+    background: transparent;
+    font-size: 20px;
+    font-weight: 700;
+    /*transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);*/
+}
+
+#custom-ws1:hover,
+#custom-ws2:hover,
+#custom-ws3:hover,
+#custom-ws4:hover {
+    background-color: rgba(255, 255, 255, 0.18);
+    color: #ffffff;
+}
+
+#custom-ws1.active,
+#custom-ws2.active,
+#custom-ws3.active,
+#custom-ws4.active {
+    background-color: rgba(255, 255, 255, 0.3);
+    color: #ffffff;
+    font-weight: 800;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+}
+
+/* Centered Clock & Date Pill */
+#clock {
+    padding: 0 8px;
+    margin: 3px 0;
+    border-radius: 50px;
+    font-weight: 800;
+    font-size: 22px;
+    color: #ffffff;
+    transition: background-color 0.2s ease;
+}
+
+#clock:hover {
+    background-color: rgba(255, 255, 255, 0.18);
+}
+
+/* System Tray */
+#tray {
+    margin: 3px 5px;
+    padding: 0 5px;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+}
+
+/* Ungrouped Individual Status Icon Buttons */
+#backlight,
+#custom-nightlight,
+#network,
+#bluetooth,
+#pulseaudio,
+#battery,
+#custom-power {
+    padding: 0px 8px;
+    margin: 3px 2px;
+    background-color: transparent;
+    border-radius: 9999px;
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 800;
+    transition: all 0.2s ease;
+}
+
+#backlight:hover,
+#custom-nightlight:hover,
+#network:hover,
+#bluetooth:hover,
+#pulseaudio:hover,
+#battery:hover {
+    padding: 0px 8px;
+    margin: 3px 2px;
+    background-color: rgba(255, 255, 255, 0.16);
+}
+
+#custom-nightlight.on {
+    color: #f8e45c;
+    background-color: transparent;
+}
+
+#custom-nightlight.on:hover {
+    background-color: rgba(248, 228, 92, 0.25);
+}
+
+#battery.critical:not(.charging) {
+    color: #f66151;
+    background-color: transparent;
+}
+
+#battery.warning:not(.charging) {
+    color: #f8e45c;
+    background-color: transparent;
+}
+
+#custom-power {
+    padding: 0 12px;
+    margin: 3px 10px 3px 2px;
+    font-size: 19px;
+    background-color: transparent;
+}
+
+#custom-power:hover {
+    background-color: rgba(224, 27, 36, 0.55);
+    color: #ffffff;
+}
+
+/* Drawer Groups (Brightness & Volume) */
+#brightness,
+#audio {
+    background-color: transparent;
+    border-radius: 9999px;
+    margin: 3px 2px;
+    padding: 0;
+    transition: all 0.2s ease;
+}
+
+#brightness:hover,
+#audio:hover {
+    background-color: rgba(255, 255, 255, 0.14);
+}
+
+#brightness #backlight,
+#audio #pulseaudio {
+    background-color: transparent;
+    margin: 0;
+}
+
+/* Brightness & Volume Sliders */
+#backlight-slider,
+#pulseaudio-slider {
+    margin: 3px 7px 3px 0;
+    padding: 0 3px;
+    background-color: transparent;
+}
+
+#backlight-slider slider,
+#pulseaudio-slider slider {
+    min-height: 15px;
+    min-width: 15px;
+    border-radius: 9999px;
+    background-color: #ffffff;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+}
+
+#backlight-slider trough,
+#pulseaudio-slider trough {
+    min-height: 9px;
+    min-width: 75px;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+#backlight-slider highlight,
+#pulseaudio-slider highlight {
+    min-height: 9px;
+    border-radius: 5px;
+    background-color: #3584e4;
+}
+
+/* Tooltips */
+tooltip {
+    background: #282828;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
+    color: #ffffff;
+    padding: 6px 10px;
+}
+
+tooltip label {
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+/* GTK Menu (Power menu) */
+menu {
+    background-color: #242424;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    padding: 6px;
+}
+
+menuitem {
+    padding: 6px 14px;
+    border-radius: 6px;
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+menuitem:hover {
+    background-color: #3584e4;
+    color: #ffffff;
+}

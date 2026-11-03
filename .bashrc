@@ -126,3 +126,4 @@ fi
 
 # Added by Antigravity CLI installer
 export PATH="/home/user/.local/bin:$PATH"
+export PATH=$PATH:$HOME/.local/bin

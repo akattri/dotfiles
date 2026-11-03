@@ -302,6 +302,10 @@ screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 // The wiki explains how to configure individual animations:
 // https://niri-wm.github.io/niri/Configuration:-Animations
 animations {
+    off
+
+    slowdown 0.2
+
     // Uncomment to turn off all animations.
     // off
 

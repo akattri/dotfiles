@@ -1,0 +1,218 @@
+// -*- mode: jsonc -*-
+{
+    "layer": "top",
+    "position": "top",
+    "height": 30,
+    "spacing": 0,
+    "modules-left": [
+        "group/workspaces"
+    ],
+    "modules-center": [
+        "clock"
+    ],
+    "modules-right": [
+        "tray",
+        "group/brightness",
+        "custom/nightlight",
+        "network",
+        "bluetooth",
+        "group/audio",
+        "battery",
+        "custom/power"
+    ],
+
+    // GNOME 45+ Workspaces (Click 1,2,3,4 to switch & open overview)
+    "group/workspaces": {
+        "orientation": "horizontal",
+        "modules": [
+            "custom/ws1",
+            "custom/ws2",
+            "custom/ws3",
+            "custom/ws4"
+        ]
+    },
+
+    "custom/ws1": {
+        "exec": "/home/user/.config/waybar/scripts/get_ws.sh 1",
+        "return-type": "json",
+        "signal": 10,
+        "on-click": "/home/user/.config/waybar/scripts/click_ws.sh 1",
+        "tooltip": false
+    },
+
+    "custom/ws2": {
+        "exec": "/home/user/.config/waybar/scripts/get_ws.sh 2",
+        "return-type": "json",
+        "signal": 10,
+        "on-click": "/home/user/.config/waybar/scripts/click_ws.sh 2",
+        "tooltip": false
+    },
+
+    "custom/ws3": {
+        "exec": "/home/user/.config/waybar/scripts/get_ws.sh 3",
+        "return-type": "json",
+        "signal": 10,
+        "on-click": "/home/user/.config/waybar/scripts/click_ws.sh 3",
+        "tooltip": false
+    },
+
+    "custom/ws4": {
+        "exec": "/home/user/.config/waybar/scripts/get_ws.sh 4",
+        "return-type": "json",
+        "signal": 10,
+        "on-click": "/home/user/.config/waybar/scripts/click_ws.sh 4",
+        "tooltip": false
+    },
+
+    // Centered Clock & Date (Permanent format, opens Google Calendar)
+    "clock": {
+        "format": "{:%I:%M %p |%e %b (%a)}",
+        "tooltip-format": "<big>{:%B %Y}</big>\n<tt><small>{calendar}</small></tt>\n\nClick: Open Google Calendar",
+        "on-click": "/home/user/.config/waybar/scripts/open_calendar.sh"
+    },
+
+    // System Tray
+    "tray": {
+        "icon-size": 18,
+        "spacing": 12
+    },
+
+    // Brightness Drawer (Revealed on click)
+    "group/brightness": {
+        "orientation": "horizontal",
+        "drawer": {
+            "transition-duration": 300,
+            "children-class": "drawer-child",
+            "transition-left-to-right": true,
+            "click-to-reveal": true
+        },
+        "modules": [
+            "backlight",
+            "backlight/slider"
+        ]
+    },
+
+    // Brightness Level Icon (Click reveals slider)
+    "backlight": {
+        "device": "intel_backlight",
+        "format": "{icon}",
+        "format-icons": ["", ""],
+        "scroll-step": 5,
+        "on-click": "/home/user/.config/niri/scripts/brightness.sh toggle",
+        "tooltip-format": "Brightness: {percent}%\n\nLeft-click: Toggle Slider\nScroll: Adjust Brightness"
+    },
+
+    // Brightness Slider
+    "backlight/slider": {
+        "min": 5,
+        "max": 100,
+        "orientation": "horizontal",
+        "device": "intel_backlight"
+    },
+
+    // Night Light
+    "custom/nightlight": {
+        "exec": "/home/user/.config/waybar/scripts/nightlight.py status",
+        "return-type": "json",
+        "interval": 2,
+        "signal": 11,
+        "format": "{icon}",
+        "format-icons": {
+            "on": "",
+            "off": ""
+        },
+        "tooltip": true,
+        "on-click": "/home/user/.config/waybar/scripts/nightlight_slider.py",
+        "on-click-right": "/home/user/.config/waybar/scripts/nightlight.py toggle",
+        "on-scroll-up": "/home/user/.config/waybar/scripts/nightlight.py warmer",
+        "on-scroll-down": "/home/user/.config/waybar/scripts/nightlight.py cooler"
+    },
+
+    // Network / Wi-Fi (Fuzzel Menu on click)
+    "network": {
+        "format-wifi": "",
+        "format-ethernet": "",
+        "format-linked": "",
+        "format-disconnected": "⚠",
+        "tooltip-format-wifi": "{essid} ({signalStrength}%)\nIP: {ipaddr}\nInterface: {ifname}\n\nClick: Wi-Fi Menu (Fuzzel)",
+        "tooltip-format-ethernet": "Connected: {ifname}\nIP: {ipaddr}\n\nClick: Wi-Fi Menu (Fuzzel)",
+        "tooltip-format-disconnected": "Disconnected\n\nClick: Wi-Fi Menu (Fuzzel)",
+        "on-click": "/home/user/.config/waybar/scripts/fuzzel_wifi.sh"
+    },
+
+    // Bluetooth (Fuzzel Menu on click)
+    "bluetooth": {
+        "format": "",
+        "format-disabled": "",
+        "format-off": "",
+        "format-connected": "",
+        "tooltip-format": "{controller_alias}\nStatus: {status}\n\nClick: Bluetooth Menu (Fuzzel)\nMiddle-click: Toggle Power",
+        "tooltip-format-connected": "{controller_alias}\n\n{device_enumerate}\n\nClick: Bluetooth Menu (Fuzzel)\nMiddle-click: Toggle Power",
+        "tooltip-format-enumerate-connected": "● {device_alias}\t{device_address}",
+        "on-click": "/home/user/.config/waybar/scripts/fuzzel_bluetooth.sh",
+        "on-click-middle": "bluetoothctl power toggle"
+    },
+
+    // Audio & Volume Drawer (Revealed on click / volume keys)
+    "group/audio": {
+        "orientation": "horizontal",
+        "drawer": {
+            "transition-duration": 300,
+            "children-class": "drawer-child",
+            "transition-left-to-right": true,
+            "click-to-reveal": true
+        },
+        "modules": [
+            "pulseaudio",
+            "pulseaudio/slider"
+        ]
+    },
+
+    // Audio & Volume (Click reveals slider)
+    "pulseaudio": {
+        "format": "{icon}",
+        "format-bluetooth": "{icon}",
+        "format-muted": "",
+        "format-bluetooth-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "default": ""
+        },
+        "scroll-step": 5,
+        "on-click": "/home/user/.config/niri/scripts/volume.sh toggle",
+        "on-click-right": "kitty --class alsamixer -e alsamixer",
+        "on-click-middle": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+        "tooltip-format": "Volume: {volume}%\n\nLeft-click: Toggle Slider\nRight-click: Alsamixer\nMiddle-click: Toggle Mute\nScroll: Adjust volume"
+    },
+
+    // Volume Slider
+    "pulseaudio/slider": {
+        "min": 0,
+        "max": 100,
+        "orientation": "horizontal"
+    },
+
+    // Battery (Fuzzel Menu on click)
+    "battery": {
+        "bat": "BAT1",
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon}",
+        "format-charging": " {icon}",
+        "format-plugged": " {icon}",
+        "format-icons": ["", "", "", "", ""],
+        "tooltip-format": "{timeTo}, {capacity}%\n\nClick: Battery & Power Profiles (Fuzzel)",
+        "on-click": "/home/user/.config/waybar/scripts/fuzzel_battery.sh"
+    },
+
+    // Power & Session Menu
+    "custom/power": {
+        "format": "⏻",
+        "tooltip-format": "Power &amp; Session Menu (Fuzzel)",
+        "on-click": "/home/user/.config/waybar/scripts/fuzzel_power.sh"
+    }
+}
